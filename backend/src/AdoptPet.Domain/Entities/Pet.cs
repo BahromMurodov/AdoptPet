@@ -29,6 +29,7 @@ public class Pet
     public List<Requisite> Requisites { get; }
     public DateTime DateCreated { get; private set; }
 
+    public List<PetPhoto> PetPhotos { get; private set; }
     private Pet()
     {
 
