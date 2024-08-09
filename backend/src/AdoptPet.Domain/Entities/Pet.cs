@@ -10,22 +10,27 @@ namespace AdoptPet.Domain.Entities;
 
 public class Pet
 {
-    public Guid Id { get; set; }
-    public string NickName { get; set; } = null!;
-    public PetType Type { get; set; } = null!;
-    public string? Description { get; set; }
+    public Guid Id { get; private set; }
+    public string NickName { get; private set; } = null!;
+    public string Type { get; private set; } = null!;
+    public string? Description { get; private set; }
 
-    public string Breed { get; set; } = null!;//порода
-    public string Color { get; set; } = null!;
-    public string Health { get; set; } = null!;
-    public string AddressLocated { get; set; } = null!;
-    public double Weight { get; set; }
-    public double Height { get; set; }
-    public string PhoneNumber { get; set; } = null!;
-    public bool IsNeutered { get; set; }//Кастрирован?
-    public DateOnly DateBirth { get; set; }
-    public bool IsVaccinated { get; set; }
-    public HelpStatus StatusHelp { get; set; }
-    public Requisites Requisites { get; set; }
-    public DateTime DateCreated { get; set; }
+    public string Breed { get; private set; } = null!;//порода
+    public string Color { get; private set; } = null!;
+    public string Health { get; private set; } = null!;
+    public string AddressLocated { get; private set; } = null!;
+    public double Weight { get; private set; }
+    public double Height { get; private set; }
+    public string PhoneNumber { get; private set; } = null!;
+    public bool IsNeutered { get; private set; }//Кастрирован?
+    public DateOnly DateBirth { get; private set; }
+    public bool IsVaccinated { get; private set; }
+    public HelpStatus StatusHelp { get; private set; }
+    public List<Requisite> Requisites { get; }
+    public DateTime DateCreated { get; private set; }
+
+    private Pet()
+    {
+
+    }
 }
