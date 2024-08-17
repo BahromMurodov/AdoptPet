@@ -6,12 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoptPet.Domain.Entities;
+namespace AdoptPet.Domain.Entities.Pets;
 
 public class Pet
 {
-    private readonly List<Requisite> _requisites = [];
-
     public Guid Id { get; private set; }
     public string NickName { get; private set; } = null!;
     public string Type { get; private set; } = null!;
@@ -28,15 +26,10 @@ public class Pet
     public DateOnly DateBirth { get; private set; }
     public bool IsVaccinated { get; private set; }
     public HelpStatus StatusHelp { get; private set; }
-    public IReadOnlyList<Requisite> Requisites => _requisites;
-    public void AddRequisite(Requisite requisite)
-    {
-        _requisites.Add(requisite);
-    }
-
 
     public DateTime DateCreated { get; private set; }
 
+    public PetDetails Details { get; private set; }
     public List<PetPhoto> PetPhotos { get; private set; }
     private Pet()
     {

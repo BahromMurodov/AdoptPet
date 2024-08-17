@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdoptPet.Domain.Entities.CommonModels;
+using AdoptPet.Domain.Entities.Pets;
 
-namespace AdoptPet.Domain.Entities;
+namespace AdoptPet.Domain.Entities.Volunteers;
 
 public class Volunteer
 {
@@ -16,8 +18,7 @@ public class Volunteer
     public int NumberPetSearchHome { get; private set; }
     public int NumberPetHealing { get; private set; }
     public string Phone { get; private set; } = string.Empty!;
-    public List<SocialMedia> SocialMedias { get; private set; } = null!;
-    public List<Requisite> Requisites { get; private set; } = null!;
+    public VolunteerDetails Details { get; private set; }
     public List<Pet> Pets { get; private set; } = null!;
 
     private Volunteer()

@@ -1,4 +1,4 @@
-﻿using AdoptPet.Domain.Entities;
+﻿using AdoptPet.Domain.Entities.Volunteers;
 using AdoptPet.Domain.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -46,5 +46,33 @@ public class VolunteerConfiguration : IEntityTypeConfiguration<Volunteer>
             .WithOne() 
             .HasForeignKey("VolunteerId") 
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.OwnsOne(x => x.Details, vd =>
+        {
+            vd.ToJson();
+            vd.OwnsMany(d => d.Requisites, r =>
+            {
+                r.Property(x => x.Name)
+                .IsRequired()
+                .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
+                
+                r.Property(x => x.Description)
+                .IsRequired()
+                .HasMaxLength(Constants.MAX_HIGH_TEXT_LENGTH);
+
+            });
+            vd.OwnsMany(d => d.SocialMedias, r =>
+            {
+                
+                r.Property(x => x.Name)
+                .IsRequired()
+                .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
+
+                r.Property(x => x.Link)
+                .IsRequired()
+                .HasMaxLength(Constants.MAX_MEDIUM_TEXT_LENGTH);
+            });
+
+        });
     }
 }

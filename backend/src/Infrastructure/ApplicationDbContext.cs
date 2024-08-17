@@ -1,4 +1,4 @@
-﻿using AdoptPet.Domain.Entities;
+﻿using AdoptPet.Domain.Entities.Pets;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -20,6 +20,11 @@ public class ApplicationDbContext(IConfiguration configuration) : DbContext
         optionsBuilder.UseNpgsql(configuration.GetConnectionString(DATABASE));
         optionsBuilder.UseSnakeCaseNamingConvention();
         optionsBuilder.UseLoggerFactory(CreateLoggerFactory());
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
 
     private ILoggerFactory CreateLoggerFactory() =>

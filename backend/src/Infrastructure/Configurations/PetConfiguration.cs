@@ -1,4 +1,4 @@
-﻿using AdoptPet.Domain.Entities;
+﻿using AdoptPet.Domain.Entities.Pets;
 using AdoptPet.Domain.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -74,6 +74,20 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
             .HasForeignKey("PetId")
             .IsRequired();
 
-        builder.ComplexProperty(r => r.Requisites);
+        builder.OwnsOne(x => x.Details, pd =>
+        {
+            pd.ToJson();
+            pd.OwnsMany(d => d.Requisites, rb =>
+            {
+                rb.Property(r => r.Name)
+                .IsRequired()
+                .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
+
+                rb.Property(r => r.Description)
+                .IsRequired()
+                .HasMaxLength(Constants.MAX_HIGH_TEXT_LENGTH);
+            });
+        });
+            
     }
 }
