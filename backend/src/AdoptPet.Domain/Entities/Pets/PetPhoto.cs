@@ -12,7 +12,6 @@ public class PetPhoto : Entity<PetPhotoId>
     private PetPhoto(PetPhotoId id) : base(id)
     { 
     }
-    public Guid Id { get; private set; }
     public string Path { get; private set; } = string.Empty!;
     public bool IsMain { get; private set; }
     

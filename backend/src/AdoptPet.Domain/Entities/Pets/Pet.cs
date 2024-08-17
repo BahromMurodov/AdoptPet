@@ -14,7 +14,6 @@ public class Pet : Entity<PetId>
     private Pet(PetId id) : base(id)
     {
     }
-    public PetId Id { get; private set; }
     public string NickName { get; private set; } = null!;
     public string Type { get; private set; } = null!;
     public string? Description { get; private set; }

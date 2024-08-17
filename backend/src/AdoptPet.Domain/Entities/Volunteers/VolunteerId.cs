@@ -6,7 +6,7 @@ public record VolunteerId
     {
         Value = value;
     }
-    public Guid Value { get; set; }
+    public Guid Value { get; private set; }
 
     public static VolunteerId NewPetId() => new(Guid.NewGuid());
     public static VolunteerId Empty() => new(Guid.Empty);
