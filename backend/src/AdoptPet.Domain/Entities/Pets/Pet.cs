@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoptPet.Domain.Entities;
+namespace AdoptPet.Domain.Entities.Pets;
 
 public class Pet
 {
@@ -26,9 +26,10 @@ public class Pet
     public DateOnly DateBirth { get; private set; }
     public bool IsVaccinated { get; private set; }
     public HelpStatus StatusHelp { get; private set; }
-    public List<Requisite> Requisites { get; }
+
     public DateTime DateCreated { get; private set; }
 
+    public PetDetails Details { get; private set; }
     public List<PetPhoto> PetPhotos { get; private set; }
     private Pet()
     {
