@@ -1,4 +1,5 @@
 ﻿using AdoptPet.Domain.Enums;
+using AdoptPet.Domain.Shared;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,9 +9,12 @@ using System.Threading.Tasks;
 
 namespace AdoptPet.Domain.Entities.Pets;
 
-public class Pet
+public class Pet : Entity<PetId>
 {
-    public Guid Id { get; private set; }
+    private Pet(PetId id) : base(id)
+    {
+    }
+    public PetId Id { get; private set; }
     public string NickName { get; private set; } = null!;
     public string Type { get; private set; } = null!;
     public string? Description { get; private set; }
@@ -31,8 +35,5 @@ public class Pet
 
     public PetDetails Details { get; private set; }
     public List<PetPhoto> PetPhotos { get; private set; }
-    private Pet()
-    {
-
-    }
+    
 }

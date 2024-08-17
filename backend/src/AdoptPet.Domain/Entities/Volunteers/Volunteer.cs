@@ -5,11 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using AdoptPet.Domain.Entities.CommonModels;
 using AdoptPet.Domain.Entities.Pets;
+using AdoptPet.Domain.Shared;
 
 namespace AdoptPet.Domain.Entities.Volunteers;
 
-public class Volunteer
+public class Volunteer : Entity<VolunteerId>
 {
+    private Volunteer(VolunteerId id) : base(id)
+    {
+    }
     public Guid Id { get; private set; }
     public string FullName { get; private set; } = string.Empty!;
     public string Description { get; private set; } = string.Empty!;
@@ -20,8 +24,4 @@ public class Volunteer
     public string Phone { get; private set; } = string.Empty!;
     public VolunteerDetails Details { get; private set; }
     public List<Pet> Pets { get; private set; } = null!;
-
-    private Volunteer()
-    {
-    }
 }
