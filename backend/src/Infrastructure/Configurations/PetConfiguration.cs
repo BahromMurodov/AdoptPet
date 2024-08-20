@@ -43,10 +43,6 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
             .IsRequired()
             .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
 
-        builder.Property(p => p.AddressLocated)
-            .IsRequired()
-            .HasMaxLength(Constants.MAX_HIGH_TEXT_LENGTH);
-
         builder.Property(p => p.Weight)
             .IsRequired();
 
@@ -71,12 +67,31 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
 
         builder.HasMany(p => p.PetPhotos)
             .WithOne()
-            .HasForeignKey("PetId")
+            .HasForeignKey("pet_id")
             .IsRequired();
 
-        builder.OwnsOne(x => x.Details, pd =>
+        builder.ComplexProperty(a => a.Address, ab =>
         {
-            pd.ToJson();
+            ab.Property(a => a.Street)
+            .IsRequired()
+            .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
+
+            ab.Property(a => a.City)
+            .IsRequired()
+            .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
+
+            ab.Property(a => a.Country)
+            .IsRequired()
+            .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
+
+            ab.Property(a => a.ZipCode)
+            .IsRequired()
+            .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
+        });
+
+        builder.OwnsOne(x => x.PetsRequisite, pd =>
+        {
+            pd.ToJson("pet_requisites");
             pd.OwnsMany(d => d.Requisites, rb =>
             {
                 rb.Property(r => r.Name)
@@ -84,7 +99,7 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
                 .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
 
                 rb.Property(r => r.Description)
-                .IsRequired()
+                .IsRequired(false)
                 .HasMaxLength(Constants.MAX_HIGH_TEXT_LENGTH);
             });
         });

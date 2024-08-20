@@ -43,36 +43,38 @@ public class VolunteerConfiguration : IEntityTypeConfiguration<Volunteer>
             .HasMaxLength(Constants.MAX_HIGH_PHONE_LENGTH);
 
         builder.HasMany(v => v.Pets)
-            .WithOne() 
-            .HasForeignKey("VolunteerId") 
+            .WithOne()
+            .HasForeignKey("VolunteerId")
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.OwnsOne(x => x.Details, vd =>
+        builder.OwnsOne(b => b.VolunteersRequisite, rb =>
         {
-            vd.ToJson();
-            vd.OwnsMany(d => d.Requisites, r =>
+            rb.ToJson("volunteer_requisites");
+            rb.OwnsMany(r => r.Requisites, x =>
             {
-                r.Property(x => x.Name)
+                x.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
-                
-                r.Property(x => x.Description)
+
+                x.Property(x => x.Description)
                 .IsRequired()
                 .HasMaxLength(Constants.MAX_HIGH_TEXT_LENGTH);
-
             });
-            vd.OwnsMany(d => d.SocialMedias, r =>
+        });
+
+        builder.OwnsOne(b => b.VolunteersSocialMedia, rb =>
+        {
+            rb.ToJson("volunteer_social_medias");
+            rb.OwnsMany(r => r.SocialMedias, x =>
             {
-                
-                r.Property(x => x.Name)
+                x.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
 
-                r.Property(x => x.Link)
+                x.Property(x => x.Link)
                 .IsRequired()
                 .HasMaxLength(Constants.MAX_MEDIUM_TEXT_LENGTH);
             });
-
         });
     }
 }
