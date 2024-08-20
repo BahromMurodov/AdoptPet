@@ -25,6 +25,6 @@ public record Address
     }
     public string Street { get; }
     public string City { get; }
-    public string Country { get; init; }
-    public string ZipCode { get; init; }
+    public string Country { get;}
+    public string ZipCode { get; }
 }

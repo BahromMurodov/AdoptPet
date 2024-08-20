@@ -14,7 +14,6 @@ namespace Infrastructure;
 public class ApplicationDbContext(IConfiguration configuration) : DbContext
 {
     private const string DATABASE = "Database";
-    public DbSet<Pet> Pets => Set<Pet>();
     public DbSet<Volunteer> Volunteers => Set<Volunteer>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
