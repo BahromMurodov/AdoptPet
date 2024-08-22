@@ -30,11 +30,6 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
             .IsRequired()
             .HasMaxLength(Constants.MAX_HIGH_TEXT_LENGTH);
 
-        builder.Property(p => p.Breed)
-            .IsRequired()
-            .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
-
-
         builder.Property(p => p.Color)
         .IsRequired() 
         .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH); 
@@ -71,7 +66,19 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
 
         builder.HasMany(p => p.PetPhotos)
             .WithOne()
-            .HasForeignKey("PetId")
+            .HasForeignKey("pet_id")
+            .IsRequired();
+
+        builder.ComplexProperty(p => p.SpeciesId,
+            sb =>
+            {
+                sb.Property(s => s.Value)
+                .IsRequired()
+                .HasColumnName("species_id");
+            });
+
+
+        builder.Property(b => b.BreedId)
             .IsRequired();
 
         builder.OwnsOne(x => x.Details, pd =>
