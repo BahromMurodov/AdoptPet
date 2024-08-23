@@ -1,4 +1,5 @@
-﻿using AdoptPet.Domain.Enums;
+﻿using AdoptPet.Domain.Entities.Species;
+using AdoptPet.Domain.Enums;
 using AdoptPet.Domain.Shared;
 using System;
 using System.Collections.Generic;
@@ -34,5 +35,8 @@ public class Pet : Entity<PetId>
 
     public PetsRequisite PetsRequisite { get; private set; }
     public List<PetPhoto> PetPhotos { get; private set; }
+
+    public SpeciesId SpeciesId { get; private set; }
+    public Guid BreedId { get; private set; }
     
 }

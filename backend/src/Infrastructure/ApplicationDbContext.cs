@@ -1,4 +1,5 @@
 ﻿using AdoptPet.Domain.Entities.Pets;
+using AdoptPet.Domain.Entities.Species;
 using AdoptPet.Domain.Entities.Volunteers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +16,7 @@ public class ApplicationDbContext(IConfiguration configuration) : DbContext
 {
     private const string DATABASE = "Database";
     public DbSet<Volunteer> Volunteers => Set<Volunteer>();
+    public DbSet<Species> Species => Set<Species>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

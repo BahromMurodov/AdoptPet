@@ -17,11 +17,11 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         builder.ToTable("pets");
 
         builder.HasKey(p => p.Id);
-        
+
         builder.Property(p => p.NickName)
             .IsRequired()
             .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
-        
+
         builder.Property(p => p.Type)
             .IsRequired()
             .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
@@ -36,8 +36,8 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
 
 
         builder.Property(p => p.Color)
-        .IsRequired() 
-        .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH); 
+        .IsRequired()
+        .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
 
         builder.Property(p => p.Health)
             .IsRequired()
@@ -47,17 +47,17 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
             .IsRequired();
 
         builder.Property(p => p.Height)
-            .IsRequired(); 
+            .IsRequired();
 
         builder.Property(p => p.PhoneNumber)
             .IsRequired()
             .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
 
         builder.Property(p => p.IsNeutered)
-            .IsRequired(); 
+            .IsRequired();
 
         builder.Property(p => p.DateBirth)
-            .IsRequired(); 
+            .IsRequired();
 
         builder.Property(p => p.IsVaccinated)
             .IsRequired();
@@ -68,6 +68,17 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         builder.HasMany(p => p.PetPhotos)
             .WithOne()
             .HasForeignKey("pet_id")
+            .IsRequired();
+
+        builder.ComplexProperty(p => p.SpeciesId,
+        sb =>
+        {
+            sb.Property(s => s.Value)
+            .IsRequired()
+            .HasColumnName("species_id");
+        });
+       
+        builder.Property(b => b.BreedId)
             .IsRequired();
 
         builder.ComplexProperty(a => a.Address, ab =>
@@ -103,6 +114,5 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
                 .HasMaxLength(Constants.MAX_HIGH_TEXT_LENGTH);
             });
         });
-            
     }
 }
