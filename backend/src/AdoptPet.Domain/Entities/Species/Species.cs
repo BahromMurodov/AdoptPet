@@ -13,7 +13,6 @@ public class Species : Entity<SpeciesId>
     private Species(SpeciesId id) : base(id)
     {
     }
-    public Guid Id { get; private set; }
     public string Name { get; private set; }
     public IReadOnlyList<Breed> Breeds => _breeds;
 

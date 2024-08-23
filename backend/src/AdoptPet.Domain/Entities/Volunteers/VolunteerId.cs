@@ -1,4 +1,6 @@
-﻿namespace AdoptPet.Domain.Entities.Volunteers;
+﻿using AdoptPet.Domain.Entities.Species;
+
+namespace AdoptPet.Domain.Entities.Volunteers;
 
 public record VolunteerId
 {
@@ -8,6 +10,17 @@ public record VolunteerId
     }
     public Guid Value { get; }
 
-    public static VolunteerId NewPetId() => new(Guid.NewGuid());
+    public static VolunteerId NewVolunteerId() => new(Guid.NewGuid());
     public static VolunteerId Empty() => new(Guid.Empty);
+
+    public static VolunteerId Create(Guid id) => new(id);
+
+    public static implicit operator VolunteerId(Guid id) => new(id);
+
+    public static implicit operator Guid(VolunteerId volunteerId)
+    {
+        ArgumentNullException.ThrowIfNull(volunteerId);
+        ArgumentNullException.ThrowIfNull(volunteerId.Value);
+        return volunteerId.Value;
+    }
 }

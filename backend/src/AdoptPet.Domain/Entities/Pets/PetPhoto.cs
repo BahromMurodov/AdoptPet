@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace AdoptPet.Domain.Entities.Pets;
 
-public class PetPhoto : Entity<PetPhotoId>
+public record PetPhoto
 {
-    private PetPhoto(PetPhotoId id) : base(id)
-    { 
+    private PetPhoto(string path, bool isMain)
+    {
+        Path = path;
+        IsMain = isMain;
     }
+
     public string Path { get; private set; } = string.Empty!;
     public bool IsMain { get; private set; }
     
