@@ -18,6 +18,12 @@ public class VolunteerConfiguration : IEntityTypeConfiguration<Volunteer>
 
         builder.HasKey(v => v.Id);
 
+        builder.Property(v => v.Id)
+            .HasConversion(
+                id => id.Value,
+                value => VolunteerId.Create(value)
+            );
+
         builder.Property(v => v.FullName)
             .IsRequired()
             .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
@@ -44,7 +50,7 @@ public class VolunteerConfiguration : IEntityTypeConfiguration<Volunteer>
 
         builder.HasMany(v => v.Pets)
             .WithOne()
-            .HasForeignKey("VolunteerId")
+            .HasForeignKey("pet_Id")
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.OwnsOne(b => b.VolunteersRequisite, rb =>

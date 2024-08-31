@@ -10,9 +10,15 @@ public class BreedConfiguration : IEntityTypeConfiguration<Breed>
     public void Configure(EntityTypeBuilder<Breed> builder)
     {
         builder.ToTable("breeds");
-        builder.HasKey(s => s.Id);
+        builder.HasKey(b => b.Id);
 
-        builder.Property(s => s.Name)
+        builder.Property(b => b.Id)
+            .HasConversion(
+                id => id.Value,
+                value => BreedId.Create(value)
+            );
+
+        builder.Property(b => b.Name)
             .IsRequired()
             .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
     }

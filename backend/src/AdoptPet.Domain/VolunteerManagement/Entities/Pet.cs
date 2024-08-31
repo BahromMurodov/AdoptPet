@@ -37,7 +37,8 @@ public class Pet : Entity<PetId>
 
     public PetsRequisite PetsRequisite { get; private set; }
     public List<PetPhoto> PetPhotos { get; private set; }
+
+    public SpeciesId SpeciesId { get; private set; }
     public Guid BreedId { get; private set; }
-
+    
 }
-

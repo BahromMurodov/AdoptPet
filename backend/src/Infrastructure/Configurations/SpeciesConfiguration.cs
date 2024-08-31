@@ -12,6 +12,12 @@ public class SpeciesConfiguration : IEntityTypeConfiguration<Species>
         builder.ToTable("species");
         builder.HasKey(s => s.Id);
 
+        builder.Property(s => s.Id)
+            .HasConversion(
+                id => id.Value,
+                value => SpeciesId.Create(value)
+            );
+
         builder.Property(s => s.Name)
             .IsRequired()
             .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);

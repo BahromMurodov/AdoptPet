@@ -18,6 +18,12 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
 
         builder.HasKey(p => p.Id);
 
+        builder.Property(p => p.Id)
+            .HasConversion(
+                id => id.Value,
+                value => PetId.Create(value)
+            );
+
         builder.Property(p => p.NickName)
             .IsRequired()
             .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
@@ -65,10 +71,16 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         builder.Property(p => p.StatusHelp)
             .IsRequired();
 
-        builder.HasMany(p => p.PetPhotos)
-            .WithOne()
-            .HasForeignKey("pet_id")
-            .IsRequired();
+        builder.OwnsOne(p => p.PhotoList, ph =>
+        {
+            ph.ToJson("pet_photos");
+            ph.OwnsMany(x => x.Photos, pb =>
+            {
+                pb.Property(x=>x.Path)
+                .IsRequired()
+                .HasMaxLength(Constants.MAX_LOW_TEXT_LENGTH);
+            });
+        });
 
         builder.ComplexProperty(p => p.SpeciesId,
         sb =>

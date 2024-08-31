@@ -22,8 +22,8 @@ public class Volunteer : Entity<VolunteerId>
     public int NumberPetSearchHome { get; private set; }
     public int NumberPetHealing { get; private set; }
     public string Phone { get; private set; } = string.Empty!;
-    public VolunteersRequisite VolunteersRequisite { get; private set; }
-    public VolunteersSocialMedia VolunteersSocialMedia { get; private set; }
+    public VolunteersRequisite? VolunteersRequisite { get; private set; }
+    public VolunteersSocialMedia? VolunteersSocialMedia { get; private set; }
 
     public List<Pet> Pets { get; private set; } = null!;
 }
