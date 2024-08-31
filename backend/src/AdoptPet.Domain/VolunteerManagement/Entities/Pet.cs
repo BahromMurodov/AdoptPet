@@ -1,6 +1,8 @@
-﻿using AdoptPet.Domain.Entities.Species;
-using AdoptPet.Domain.Enums;
-using AdoptPet.Domain.Shared;
+﻿using AdoptPet.Domain.Shared;
+using AdoptPet.Domain.Shared.ValueObjects;
+using AdoptPet.Domain.SpeciesManagement.IDs;
+using AdoptPet.Domain.VolunteerManagement.IDs;
+using AdoptPet.Domain.VolunteerManagement.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,18 +10,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoptPet.Domain.Entities.Pets;
+namespace AdoptPet.Domain.VolunteerManagement.Entities;
 
 public class Pet : Entity<PetId>
 {
     private Pet(PetId id) : base(id)
     {
     }
-    public string NickName { get; private set; } = null!;
+    public NickName NickName { get; private set; } = null!;
     public string Type { get; private set; } = null!;
     public string? Description { get; private set; }
 
-    public string Breed { get; private set; } = null!;//порода
+    public SpeciesDetails SpeciesAndBreed { get; private set; } = null!;//порода и вид
     public string Color { get; private set; } = null!;
     public string Health { get; private set; } = null!;
     public Address Address { get; private set; } = null!;
@@ -35,8 +37,7 @@ public class Pet : Entity<PetId>
 
     public PetsRequisite PetsRequisite { get; private set; }
     public List<PetPhoto> PetPhotos { get; private set; }
-
-    public SpeciesId SpeciesId { get; private set; }
     public Guid BreedId { get; private set; }
-    
+
 }
+

@@ -1,6 +1,7 @@
 ﻿using AdoptPet.Domain.Shared;
+using AdoptPet.Domain.SpeciesManagement.IDs;
 
-namespace AdoptPet.Domain.Entities.Species;
+namespace AdoptPet.Domain.SpeciesManagement.Entities;
 
 public class Breed : Entity<BreedId>
 {

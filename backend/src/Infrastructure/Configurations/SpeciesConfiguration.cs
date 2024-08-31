@@ -1,7 +1,7 @@
-﻿using AdoptPet.Domain.Entities.Species;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using AdoptPet.Domain.Shared;
+using AdoptPet.Domain.SpeciesManagement.AggregateRoot;
 
 namespace Infrastructure.Configurations;
 

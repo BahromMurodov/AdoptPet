@@ -1,6 +1,5 @@
-﻿using AdoptPet.Domain.Entities.Pets;
-using AdoptPet.Domain.Entities.Species;
-using AdoptPet.Domain.Entities.Volunteers;
+﻿using AdoptPet.Domain.SpeciesManagement.AggregateRoot;
+using AdoptPet.Domain.VolunteerManagement.AggregateRoot;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;

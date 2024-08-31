@@ -1,4 +1,4 @@
-﻿namespace AdoptPet.Domain.Entities.Species;
+﻿namespace AdoptPet.Domain.SpeciesManagement.IDs;
 
 public record SpeciesId
 {

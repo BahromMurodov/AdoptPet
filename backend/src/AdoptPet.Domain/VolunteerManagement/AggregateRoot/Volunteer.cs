@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AdoptPet.Domain.Entities.CommonModels;
-using AdoptPet.Domain.Entities.Pets;
 using AdoptPet.Domain.Shared;
+using AdoptPet.Domain.VolunteerManagement.Entities;
+using AdoptPet.Domain.VolunteerManagement.IDs;
+using AdoptPet.Domain.VolunteerManagement.ValueObjects;
 
-namespace AdoptPet.Domain.Entities.Volunteers;
+namespace AdoptPet.Domain.VolunteerManagement.AggregateRoot;
 
 public class Volunteer : Entity<VolunteerId>
 {

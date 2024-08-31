@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoptPet.Domain.Entities.CommonModels;
+namespace AdoptPet.Domain.Shared.ValueObjects;
 
 public class Requisite
 {

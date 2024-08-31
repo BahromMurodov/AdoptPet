@@ -1,8 +1,8 @@
-﻿namespace AdoptPet.Domain.Entities.Volunteers;
+﻿namespace AdoptPet.Domain.VolunteerManagement.IDs;
 
 public record VolunteerId
 {
-    private VolunteerId(Guid value) 
+    private VolunteerId(Guid value)
     {
         Value = value;
     }

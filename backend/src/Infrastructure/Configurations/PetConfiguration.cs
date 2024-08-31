@@ -1,5 +1,5 @@
-﻿using AdoptPet.Domain.Entities.Pets;
-using AdoptPet.Domain.Shared;
+﻿using AdoptPet.Domain.Shared;
+using AdoptPet.Domain.VolunteerManagement.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

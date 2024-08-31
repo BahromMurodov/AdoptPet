@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AdoptPet.Domain.Entities.CommonModels;
+using AdoptPet.Domain.Shared.ValueObjects;
 
-namespace AdoptPet.Domain.Entities.Pets;
+namespace AdoptPet.Domain.VolunteerManagement.ValueObjects;
 
 public record PetsRequisite
 {
     public PetsRequisite()
-    { 
+    {
     }
 
     public PetsRequisite(IEnumerable<Requisite> requisites)
     {
-        Requisites = requisites.ToList();        
+        Requisites = requisites.ToList();
     }
     public IReadOnlyList<Requisite> Requisites { get; }
 }

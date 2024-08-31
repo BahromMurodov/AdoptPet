@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoptPet.Domain.Entities.Pets;
+namespace AdoptPet.Domain.Shared.ValueObjects;
 
 public record Address
 {
@@ -13,9 +13,9 @@ public record Address
     private Address()
     {
     }
-    private Address(string street, 
-                    string city, 
-                    string country, 
+    private Address(string street,
+                    string city,
+                    string country,
                     string zipCode)
     {
         Street = street;
@@ -25,6 +25,6 @@ public record Address
     }
     public string Street { get; }
     public string City { get; }
-    public string Country { get;}
+    public string Country { get; }
     public string ZipCode { get; }
 }

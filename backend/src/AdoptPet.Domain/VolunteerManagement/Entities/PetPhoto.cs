@@ -1,18 +1,19 @@
 ﻿using AdoptPet.Domain.Shared;
+using AdoptPet.Domain.VolunteerManagement.IDs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoptPet.Domain.Entities.Pets;
+namespace AdoptPet.Domain.VolunteerManagement.Entities;
 
 public class PetPhoto : Entity<PetPhotoId>
 {
     private PetPhoto(PetPhotoId id) : base(id)
-    { 
+    {
     }
     public string Path { get; private set; } = string.Empty!;
     public bool IsMain { get; private set; }
-    
+
 }

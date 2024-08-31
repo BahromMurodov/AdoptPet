@@ -1,11 +1,13 @@
 ﻿using AdoptPet.Domain.Shared;
+using AdoptPet.Domain.SpeciesManagement.Entities;
+using AdoptPet.Domain.SpeciesManagement.IDs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoptPet.Domain.Entities.Species;
+namespace AdoptPet.Domain.SpeciesManagement.AggregateRoot;
 
 public class Species : Entity<SpeciesId>
 {
